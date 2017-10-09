@@ -1,5 +1,6 @@
 ﻿namespace VRTK.Examples
 {
+
     using UnityEngine;
 
     public class RealGun_SafetySwitch : VRTK_InteractableObject

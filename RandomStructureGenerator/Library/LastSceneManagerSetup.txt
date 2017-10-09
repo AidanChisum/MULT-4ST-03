@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/DungeonGeneratorWithController.unity
+- path: Assets/Resources/Scenes/GunInteractTest.unity
   isLoaded: 1
   isActive: 1
