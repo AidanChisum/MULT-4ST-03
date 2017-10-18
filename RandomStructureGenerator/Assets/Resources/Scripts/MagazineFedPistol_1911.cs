@@ -3,9 +3,15 @@ using VRTK;
 
 public class MagazineFedPistol_1911 : VRTK_InteractableObject
 {
+    //definitions about shooting
     public float bulletSpeed = 200f;
     public float bulletLife = 5f;
 
+    public float bulletDamage = 1;
+    public float shotRange = 25f;
+    public float fireRate = .25f;
+
+    //gameobject references
     private GameObject bullet;
     private GameObject trigger;
     private MagazineFedPistol_Slide slide;
@@ -77,7 +83,8 @@ public class MagazineFedPistol_1911 : VRTK_InteractableObject
         base.StartUsing(currentUsingObject);
         
         slide.Fire();
-        FireBullet();
+        //FireBullet();
+        fireRaycast();
         VRTK_ControllerHaptics.TriggerHapticPulse(VRTK_ControllerReference.GetControllerReference(controllerEvents.gameObject), 0.63f, 0.2f, 0.01f);
     }
 
@@ -116,5 +123,20 @@ public class MagazineFedPistol_1911 : VRTK_InteractableObject
         Rigidbody rb = bulletClone.GetComponent<Rigidbody>();
         rb.AddForce(bullet.transform.forward * bulletSpeed);
         Destroy(bulletClone, bulletLife);
+    }
+
+    private void fireRaycast(){
+
+        
+
+        RaycastHit hit;
+
+            if (Physics.Raycast(this.gameObject.transform.GetChild(8).position, transform.TransformDirection(Vector3.forward), out hit, shotRange)){
+
+                 Debug.Log("hit something, in fact hit " + hit.collider.gameObject.name);
+
+                GameObject clone = Instantiate(bullet, hit.point, Quaternion.identity) as GameObject;
+                clone.SetActive(true);
+            }
     }
 }
