@@ -97,6 +97,7 @@
     <Compile Include="Assets\DungeonGenerator\Scripts\GeneratorDoor.cs" />
     <Compile Include="Assets\DungeonGenerator\Scripts\Room.cs" />
     <Compile Include="Assets\DungeonGenerator\Scripts\Volume.cs" />
+    <Compile Include="Assets\Magazine_1911.cs" />
     <Compile Include="Assets\Resources\Scripts\MagazineFedPistol.cs" />
     <Compile Include="Assets\Resources\Scripts\MagazineFedPistol_1911.cs" />
     <Compile Include="Assets\Resources\Scripts\MagazineFedPistol_SafetySwitch.cs" />

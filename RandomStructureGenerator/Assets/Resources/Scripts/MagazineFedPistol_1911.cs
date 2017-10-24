@@ -10,6 +10,7 @@ public class MagazineFedPistol_1911 : VRTK_InteractableObject
     public float bulletDamage = 1;
     public float shotRange = 25f;
     public float fireRate = .25f;
+    private bool roundInChamber;
 
     //gameobject references
     private GameObject bullet;
@@ -116,6 +117,7 @@ public class MagazineFedPistol_1911 : VRTK_InteractableObject
         }
     }
 
+    //included by defualt, not in use
     private void FireBullet()
     {
         GameObject bulletClone = Instantiate(bullet, bullet.transform.position, bullet.transform.rotation) as GameObject;
@@ -125,18 +127,28 @@ public class MagazineFedPistol_1911 : VRTK_InteractableObject
         Destroy(bulletClone, bulletLife);
     }
 
+    //Using this one!
     private void fireRaycast(){
-
-        
 
         RaycastHit hit;
 
-            if (Physics.Raycast(this.gameObject.transform.GetChild(8).position, transform.TransformDirection(Vector3.forward), out hit, shotRange)){
+        Rigidbody slideRigidBody = slide.GetComponent(typeof(Rigidbody)) as Rigidbody;
+        slideRigidbody.AddForce(0, 0, 0, ForceMode.Impulse);
 
-                 Debug.Log("hit something, in fact hit " + hit.collider.gameObject.name);
+        if (roundInChamber)
+        {
+            if (Physics.Raycast(this.gameObject.transform.GetChild(8).position, transform.TransformDirection(Vector3.forward), out hit, shotRange))
+            {
+
+                Debug.Log("hit something, in fact hit " + hit.collider.gameObject.name);
 
                 GameObject clone = Instantiate(bullet, hit.point, Quaternion.identity) as GameObject;
                 clone.SetActive(true);
             }
+        }
+        else
+        {
+            //*click*
+        }
     }
 }
