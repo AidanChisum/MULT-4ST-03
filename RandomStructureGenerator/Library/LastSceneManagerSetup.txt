@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resources/Scenes/GunInteractTest.unity
+- path: Assets/Resources/Scenes/WheelchairMovementTest.unity
   isLoaded: 1
   isActive: 1
